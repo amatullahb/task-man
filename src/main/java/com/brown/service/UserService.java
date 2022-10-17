@@ -7,7 +7,7 @@ import com.brown.model.User;
 
 public interface UserService {
 	
-	public Optional<User> getUserById (Long id);
+	public User getUserById (Long id);
 	
 	public List<User> getAllUsers ();
 	
