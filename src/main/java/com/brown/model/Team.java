@@ -8,7 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,13 +19,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name="team")
 public class Team {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter
-	private int id;
+	private Long id;
 	
 	@Column(nullable=false)
 	@Getter
@@ -37,7 +37,7 @@ public class Team {
 	@Setter
 	private String description;
 	
-	@ManyToMany(targetEntity=User.class, fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=User.class, fetch=FetchType.EAGER)
 	@Getter
 	private List<User> members;
 	

@@ -15,13 +15,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name="user")
 public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter
-	private int id;
+	private Long id;
 	
 	@Column(nullable=false)
 	@Getter
@@ -32,4 +32,15 @@ public class User {
 	@Getter
 	@Setter
 	private String lastname;
+	
+	@Column(nullable=false)
+	@Getter
+	@Setter
+	private String email;
+	
+	@Column(nullable=false)
+	@Getter
+	@Setter
+	private String password;
+
 }

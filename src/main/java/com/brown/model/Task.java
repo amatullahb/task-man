@@ -1,5 +1,6 @@
 package com.brown.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -19,12 +20,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name="task")
 public class Task {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter
-	private int id;
+	private Long id;
 	
 	@Column(nullable=false)
 	@Getter
@@ -41,14 +42,34 @@ public class Task {
 	@Setter
 	private String status;
 	
+	@Column
+	@Getter
+	@Setter
+	private boolean urgent;
+	
+	@Column
+	@Getter
+	@Setter
+	private Date completedOn;
+	
 	@ManyToMany(targetEntity=User.class, fetch=FetchType.EAGER)
 	@Getter
 	private List<User> assignedTo;
 	
+	/**
+	 * Method adds a user to the task's assignedTo list. 
+	 * This also creates a record in the userstasks table.
+	 * @param user
+	 */
 	public void assignToUser (User user) {
 		assignedTo.add(user);
 	}
 	
+	/**
+	 * Method removes a user from the task's assignedTo list.
+	 * This removes the record associating this user to the task in the usertasks table.s
+	 * @param user
+	 */
 	public void removeUserFromTask (User user) {
 		assignedTo.remove(user);
 	}

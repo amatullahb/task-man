@@ -8,8 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,12 +20,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name="project")
 public class Project {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter
-	private int id;
+	private Long id;
 	
 	@Column(nullable=false)
 	@Getter
@@ -37,12 +37,13 @@ public class Project {
 	@Setter
 	private String description;
 	
-	@ManyToMany(targetEntity=Task.class, fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=Task.class, fetch=FetchType.LAZY)
 	@Getter
 	private List<Task> tasks;
 	
-	@OneToMany(targetEntity=Team.class, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity=Team.class, fetch=FetchType.LAZY)
 	@Getter
+	@Setter
 	private Team team;
 	
 	@Column(nullable=false)
