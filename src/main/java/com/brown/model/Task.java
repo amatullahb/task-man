@@ -2,6 +2,7 @@ package com.brown.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -73,4 +74,24 @@ public class Task {
 	public void removeUserFromTask (User user) {
 		assignedTo.remove(user);
 	}
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(assignedTo, completedOn, description, id, name, status, urgent);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Task other = (Task) obj;
+        return Objects.equals(assignedTo, other.assignedTo) && Objects.equals(completedOn, other.completedOn)
+                && Objects.equals(description, other.description) && Objects.equals(id, other.id)
+                && Objects.equals(name, other.name) && Objects.equals(status, other.status) && urgent == other.urgent;
+    }
+	
 }

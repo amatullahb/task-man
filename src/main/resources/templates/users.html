@@ -17,9 +17,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="user : ${users}">
-					<td th:text="${user.firstname"></td>
-					<td th:text="${user.lastname"></td>
+				<tr th:each="user : ${usersList}">
+					<td th:text="${user.firstname}"></td>
+					<td th:text="${user.lastname}"></td>
 					<td th:text="${user.email}"></td>
 				</tr>
 			</tbody>

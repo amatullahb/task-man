@@ -1,6 +1,7 @@
 package com.brown.model;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,4 +50,22 @@ public class Team {
 		members.remove(member);
 	}
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, id, members, name);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Team other = (Team) obj;
+        return Objects.equals(description, other.description) && Objects.equals(id, other.id)
+                && Objects.equals(members, other.members) && Objects.equals(name, other.name);
+    }
+	
 }

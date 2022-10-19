@@ -22,7 +22,11 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public Task getTaskById(Long id) {
 		Optional<Task> _task = taskRepository.findById(id);
-		return _task.get();
+		if (_task.isPresent()) {
+		    return _task.get();
+		} else {
+		    return null;
+		}
 	}
 
 	@Override
@@ -45,44 +49,55 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public void updateTaskDescription(Long id, String description) {
 		Optional<Task> _task = taskRepository.findById(id);
-		Task task = _task.get();
-		task.setDescription(description);
+		if (_task.isPresent()) {
+		    Task task = _task.get();
+		    task.setDescription(description);
+		}
 	}
 
 	@Override
 	public void markTaskUrgent(Long id) {
 		Optional<Task> _task = taskRepository.findById(id);
-		Task task = _task.get();
-		task.setUrgent(true);
+		if (_task.isPresent()) {
+		    Task task = _task.get();
+		    task.setUrgent(true);
+		}
 	}
 
 	@Override
 	public void markTaskNonUrgent(Long id) {
 		Optional<Task> _task = taskRepository.findById(id);
-		Task task = _task.get();
-		task.setUrgent(false);
-		
+		if (_task.isPresent()) {
+		    Task task = _task.get();
+		    task.setUrgent(false);
+		}
 	}
 
 	@Override
 	public void updateTaskStatus(Long id, String status) {
 		Optional<Task> _task = taskRepository.findById(id);
-		Task task = _task.get();
-		task.setStatus(status);
+		if (_task.isPresent()) {
+		    Task task = _task.get();
+		    task.setStatus(status);
+		}
 	}
 
 	@Override
 	public void addUserToTask(Long id, User user) {
 		Optional<Task> _task = taskRepository.findById(id);
-		Task task = _task.get();
-		task.assignToUser(user);
+		if (_task.isPresent()) {
+		    Task task = _task.get();
+		    task.assignToUser(user);
+		}
 	}
 
 	@Override
 	public void removeUserFromTask(Long id, User user) {
 		Optional<Task> _task = taskRepository.findById(id);
-		Task task = _task.get();
-		task.removeUserFromTask(user);
+		if (_task.isPresent()) {
+		    Task task = _task.get();
+		    task.removeUserFromTask(user);
+		}
 	}
 
 }

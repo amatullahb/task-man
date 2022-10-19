@@ -1,6 +1,7 @@
 package com.brown.model;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,8 @@ import lombok.Setter;
 @Entity
 @Table(name="project")
 public class Project {
-	@Id
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Getter
 	private Long id;
@@ -58,4 +60,23 @@ public class Project {
 	public void removeTask (Task task) {
 		tasks.remove(task);
 	}
+	
+	@Override
+    public int hashCode() {
+        return Objects.hash(description, id, name, status, tasks, team);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Project other = (Project) obj;
+        return Objects.equals(description, other.description) && Objects.equals(id, other.id)
+                && Objects.equals(name, other.name) && Objects.equals(status, other.status)
+                && Objects.equals(tasks, other.tasks) && Objects.equals(team, other.team);
+    }
 }

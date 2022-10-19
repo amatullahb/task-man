@@ -23,7 +23,11 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public Project getProjectById(Long id) {
 		Optional<Project> _project = projectRepository.findById(id);
-		return _project.get();
+		if (_project.isPresent()) {
+		    return _project.get();
+		} else {
+		    return null;
+		}
 	}
 
 	@Override
@@ -44,43 +48,55 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void updateProjectName(Long id, String name) {
 		Optional<Project> _project = projectRepository.findById(id);
-		Project project = _project.get();
-		project.setName(name);
+		if (_project.isPresent()) {
+		    Project project = _project.get();
+		    project.setName(name);
+		}
 	}
 
 	@Override
 	public void updateProjectDescription(Long id, String description) {
 		Optional<Project> _project = projectRepository.findById(id);
-		Project project = _project.get();
-		project.setDescription(description);
+		if (_project.isPresent()) {
+		    Project project = _project.get();
+		    project.setDescription(description);
+		}
 	}
 
 	@Override
 	public void addTaskToProject(Long id, Task task) {
 		Optional<Project> _project = projectRepository.findById(id);
-		Project project = _project.get();
-		project.addTask(task);
+		if (_project.isPresent()) {
+		    Project project = _project.get();
+		    project.addTask(task);
+		}
 	}
 
 	@Override
 	public void removeTaskFromProject(Long id, Task task) {
 		Optional<Project> _project = projectRepository.findById(id);
-		Project project = _project.get();
-		project.removeTask(task);
+		if (_project.isPresent()) {
+		    Project project = _project.get();
+		    project.removeTask(task);
+		}
 	}
 
 	@Override
 	public void assignTeamToProject(Long id, Team team) {
 		Optional<Project> _project = projectRepository.findById(id);
-		Project project = _project.get();
-		project.setTeam(team);
+		if (_project.isPresent()) {
+		    Project project = _project.get();
+		    project.setTeam(team);
+		}
 	}
 
 	@Override
 	public void updateProjectStatus(Long id, String status) {
 		Optional<Project> _project = projectRepository.findById(id);
-		Project project = _project.get();
-		project.setStatus(status);
+		if (_project.isPresent()) {
+		    Project project = _project.get();
+		    project.setStatus(status);
+		}
 	}
 
 }
