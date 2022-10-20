@@ -64,6 +64,10 @@ body {
     width: 100%;
 }
 
+#project-items input {
+    margin-left: 5px;
+}
+
 .list {
     height: 85vh;
     width: 30vw;

@@ -9,7 +9,7 @@
     <header>
         <nav class="main-nav">
             <h2>taskman</h2>
-            <a href="/users/{id}"><p>Profile</p></a>
+            <a href="/users/1"><p>Profile</p></a>
             <a href="/team"><p>Team</=></a>
             <span></span>
             <span></span>
@@ -19,32 +19,45 @@
     <section id="project-items" class="container">
         <div class="todo list">
             <h3>To do</h3>
-            <ul th:each="task : ${tasks}">
-                <li th:text="${task.name}">
-                    <span th:if="${task.urgent == true" class="urgent"></span>
+            <ul th:each="todoTask : ${todoTasks}">
+                <li th:text="${todoTask.name}">
+                     <a th:href="@{project}">Edit</a> 
+                     <a th:href="@{/project}">Delete</a>
                 </li>
-                <li class="urgent">urgent task, no div</li>
-                <div class="urgent">
-                    <li>urgent task, div</li>
-                </div>
-                <li>non urgent task</li>
             </ul>
-            <div>Add item</div>
-            <ul>
-                <li class="urgent">urgent task, no div</li>
-                <div class="urgent">
-                    <li>urgent task, div</li>
-                </div>
-                <li>non urgent task</li>
-            </ul>
+            <!-- <form method="post" id="todo-form" 
+            th:action="@{/project}" th:object="${task}">
+                <input type="text" placeholder="Add item" th:field="*{name}">
+            </form> -->
+            <form action="">
+                <input type="text" placeholder="Add item">
+            </form>
         </div>
         <div class="doing list">
             <h3>Doing</h3>
-            <div>Add item</div>
+            <ul th:each="doingTask : ${doingTasks}">
+                <li th:text="${doingTask.name}"> <a >Delete</a></li>
+            </ul>
+            <!-- <form method="post" id="doing-form" 
+            th:action="@{/project}" th:object="${task}">
+                <input type="text" placeholder="Add item" th:field="*{name}">
+            </form> -->
+            <form action="">
+                <input type="text" placeholder="Add item">
+            </form>
         </div>
         <div class="done list">
             <h3>Done</h3>
-            <div>Add item</div>
+            <ul th:each="doneTask : ${doneTasks}">
+                <li th:text="${doneTask.name}"> <a >Delete</a></li>
+            </ul>
+            <!-- <form method="post" id="done-form" 
+            th:action="@{/project}" th:object="${task}">
+                <input type="text" placeholder="Add item" th:field="*{name}">
+            </form> -->
+            <form action="">
+                <input type="text" placeholder="Add item">
+            </form>
         </div>
     </section>
     

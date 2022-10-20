@@ -12,12 +12,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.brown.dto.UserDto;
+import com.brown.model.Task;
 import com.brown.model.Team;
 import com.brown.model.User;
+import com.brown.service.TaskService;
 import com.brown.service.TeamService;
 import com.brown.service.UserService;
 import com.brown.userstore.ActiveUserStore;
 
+/**
+ * Spring Controller, contains mappings
+ * @author Amatullah Brown
+ *
+ */
 @Controller
 public class MainController {
 	
@@ -26,6 +33,9 @@ public class MainController {
 	
 	@Autowired
 	private TeamService teamService;
+	
+	@Autowired
+	private TaskService taskService;
 	
 	@Autowired
 	private ActiveUserStore loggedUser;
@@ -69,6 +79,10 @@ public class MainController {
         return "user";
     }
     
+    /**
+     * Allows user to login with valid credentials
+     * @return login.html
+     */
     @GetMapping("/login")
     public String showLogin () {
         return "login";
@@ -98,6 +112,11 @@ public class MainController {
 		return "users";
 	}
 	
+	/**
+	 * Shows all teams
+	 * @param model
+	 * @return teams.html
+	 */
 	@GetMapping("/teams")
 	public String viewTeams (Model model) {
 	    model.addAttribute("teamList", teamService.getAllTeams());
@@ -107,6 +126,12 @@ public class MainController {
 	    return "teams";
 	}
 	
+	/**
+	 * Is called when a new team is added via frontend
+	 * @param team
+	 * @param model
+	 * @return teams.html with new team
+	 */
 	@PostMapping("/teams")
     public String viewNewTeam (@ModelAttribute("team") Team team, Model model) {
 	    Team newTeam = new Team();
@@ -117,30 +142,38 @@ public class MainController {
         return "teams";
     }
 	
-    
+    /**
+     * Shows the main project page
+     * @return project.html
+     */
     @GetMapping("/project")
     public String showProject () {
         return "project";
     }
     
+    /**
+     * Updates the main project page after changes from the frontend
+     * @param task
+     * @param user
+     * @param model
+     * @return project.html
+     */
     @PostMapping("/project")
-    public String joinTeam (@ModelAttribute("team") Team team, @ModelAttribute("user") User user, Model model) {
-        teamService.addTeamMember(team.getId(), user);
+    public String joinTeam (@ModelAttribute("task") Task task, Model model) {
+        Task newTask = new Task();
+        newTask.setName(task.getName());
+        taskService.addTask(newTask);
+        model.addAttribute("todoTasks", taskService.getAllTasks());
         return "project";
     }
 	
-	
-//	@PostMapping("/users")
-//    public String viewAllUsers (Model model) {
-//	    model.addAttribute("usersList", userService.getAllUsers());
-//        return "users";
-//    }
-    
-	
-
-//    @GetMapping("/error")
-//    public String showError () {
-//        return "error";
-//    }
+    /**
+     * Shows custom error page
+     * @return error.html
+     */
+    @GetMapping("/error")
+    public String showError () {
+        return "error";
+    }
 	
 }

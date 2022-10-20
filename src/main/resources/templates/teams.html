@@ -9,7 +9,7 @@
     <header>
         <nav class="main-nav">
             <h2>taskman</h2>
-            <a href="/users/{id}"><p>Profile</p></a>
+            <a href="/users/1"><p>Profile</p></a>
             <a href="/team"><p>Team</=></a>
             <span></span>
             <span></span>
@@ -22,15 +22,16 @@
             <tr th:each="team : ${teamList}">
                 <td th:text="${team.name}"></td>
                 <td th:text="${team.description}"></td>
-                <td th:text="${team.members}"></td>
+                <!-- <td th:text="${team.members}"></td> -->
                 <td>
                     <!-- <a th:href="${team.addMember(user)}"> -->
-                    <a href="/project">
+                    <!-- <a href="/project">
                         <button class="small-btn">
                             Join
                         </button>
-                    </a>
+                    </a> -->
                 </td>
+                <td><a th:href="@{/teams}">Delete</a></td>
             </tr>
             <form method="post" id="team-form" 
             th:action="@{/teams}" th:object="${team}">
