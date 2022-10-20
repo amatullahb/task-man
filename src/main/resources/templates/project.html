@@ -25,6 +25,14 @@
                      <a th:href="@{/project}">Delete</a>
                 </li>
             </ul>
+            <ul>
+                <li class="urgent">
+                    Send out quarterly reports
+                </li>
+                <li>
+                    Schedule interviews
+                </li>
+            </ul>
             <!-- <form method="post" id="todo-form" 
             th:action="@{/project}" th:object="${task}">
                 <input type="text" placeholder="Add item" th:field="*{name}">
@@ -38,6 +46,11 @@
             <ul th:each="doingTask : ${doingTasks}">
                 <li th:text="${doingTask.name}"> <a >Delete</a></li>
             </ul>
+            <ul>
+                <li>
+                    Complete budget proposal
+                </li>
+            </ul>
             <!-- <form method="post" id="doing-form" 
             th:action="@{/project}" th:object="${task}">
                 <input type="text" placeholder="Add item" th:field="*{name}">
@@ -50,6 +63,11 @@
             <h3>Done</h3>
             <ul th:each="doneTask : ${doneTasks}">
                 <li th:text="${doneTask.name}"> <a >Delete</a></li>
+            </ul>
+            <ul>
+                <li>
+                    Review resumes
+                </li>
             </ul>
             <!-- <form method="post" id="done-form" 
             th:action="@{/project}" th:object="${task}">
