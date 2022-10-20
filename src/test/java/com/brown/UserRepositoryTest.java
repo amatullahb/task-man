@@ -14,6 +14,7 @@ public class UserRepositoryTest {
     
     @Test
     void findByEmailTest () {
+        // create user
         User user = new User();
         user.setFirstname("John");
         user.setLastname("Smith");
@@ -21,6 +22,10 @@ public class UserRepositoryTest {
         user.setPassword("password");
         
         UserService userService = new UserServiceImpl();
+        // save user
+        userService.addUser(user);
+        
+        // search for user
         User foundUser = userService.findUserByEmail("jsmith@gmail.com");
         
         assertEquals(user, foundUser);

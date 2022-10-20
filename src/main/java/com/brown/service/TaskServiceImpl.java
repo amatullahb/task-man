@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.brown.model.Task;
 import com.brown.model.User;
 import com.brown.repository.TaskRepository;
 
+@Service
 public class TaskServiceImpl implements TaskService {
 	
 	@Autowired

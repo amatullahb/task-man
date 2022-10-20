@@ -9,24 +9,44 @@
     <header>
         <nav class="main-nav">
             <h2>taskman</h2>
-            <a href="/users{id}"><h4>Profile</h4></a>
-            <a href="/users"><h4>Team</h4></a>
+            <a href="/users/{id}"><p>Profile</p></a>
+            <a href="/team"><p>Team</=></a>
             <span></span>
             <span></span>
-            <a href="/"><h4>Logout</h4></a>
+            <a href="/"><p>Logout</p></a>
         </nav>
-        <section id="project-items">
-            <div class="todo list">
-                <div>Add item</div>
-            </div>
-            <div class="doing list">
-                <div>Add item</div>
-            </div>
-            <div class="done list">
-                <div>Add item</div>
-            </div>
-        </section>
     </header>
+    <section id="project-items" class="container">
+        <div class="todo list">
+            <h3>To do</h3>
+            <ul th:each="task : ${tasks}">
+                <li th:text="${task.name}">
+                    <span th:if="${task.urgent == true" class="urgent"></span>
+                </li>
+                <li class="urgent">urgent task, no div</li>
+                <div class="urgent">
+                    <li>urgent task, div</li>
+                </div>
+                <li>non urgent task</li>
+            </ul>
+            <div>Add item</div>
+            <ul>
+                <li class="urgent">urgent task, no div</li>
+                <div class="urgent">
+                    <li>urgent task, div</li>
+                </div>
+                <li>non urgent task</li>
+            </ul>
+        </div>
+        <div class="doing list">
+            <h3>Doing</h3>
+            <div>Add item</div>
+        </div>
+        <div class="done list">
+            <h3>Done</h3>
+            <div>Add item</div>
+        </div>
+    </section>
     
 </body>
 </html>

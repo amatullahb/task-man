@@ -6,9 +6,21 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-	<div>
-		<h1>Users</h1>
-		<table>
+	<header>
+        <nav class="main-nav">
+            <h2>taskman</h2>
+            <!-- <a th:href="@{/users/{id}(id=${user.id})?:1}"><p>Profile</p></a> -->
+			<!-- <a th:href="@{'/users/' + (${user.id})?:1}"><p>Profile</p></a> -->
+			<a href="/users/1"><p>Profile</p></a>
+			<a href="/team"><p>Team</p></a>
+            <span></span>
+            <span></span>
+            <a href="/"><p>Logout</p></a>
+        </nav>
+    </header>
+	<section class="container">
+		<h1>Your Team</h1>
+		<table class="users-table">
 			<thead>
 				<tr>
 					<th>First Name</th>
@@ -24,6 +36,7 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
+		<a href="/teams">Join a new team!</a>
+	</section>
 </body>
 </html>

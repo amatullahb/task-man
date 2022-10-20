@@ -33,7 +33,7 @@ public class Team {
 	@Setter
 	private String name;
 	
-	@Column(nullable=false)
+//	@Column(nullable=false)
 	@Getter
 	@Setter
 	private String description;

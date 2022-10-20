@@ -6,14 +6,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
 }
 
 h1 {
     text-align: center;
 }
 
-h3 {
+form h3 {
     text-align: center;
+    margin-bottom: 15px;
+}
+
+input {
+    border: solid var(--blue) 1px;
 }
 
 .user-info {
@@ -42,4 +48,26 @@ form {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.bad input {
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+#error {
+    grid-area: error;
+    grid-column-start: 2;
+    color: red;
+    font-size: 9px;
+    height: 10px;
+}
+
+#register-a {
+    width: 25%;
+    text-align: center;
+}
+
+a {
+    margin-top: 5px;
 }

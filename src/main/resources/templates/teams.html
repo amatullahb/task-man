@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>taskman</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <h2>taskman</h2>
+            <a href="/users/{id}"><p>Profile</p></a>
+            <a href="/team"><p>Team</=></a>
+            <span></span>
+            <span></span>
+            <a href="/"><p>Logout</p></a>
+        </nav>
+    </header>
+    <section class="container">
+        <h1>Teams</h1>
+        <table>
+            <tr th:each="team : ${teamList}">
+                <td th:text="${team.name}"></td>
+                <td th:text="${team.description}"></td>
+                <td th:text="${team.members}"></td>
+                <td>
+                    <!-- <a th:href="${team.addMember(user)}"> -->
+                    <a href="/project">
+                        <button class="small-btn">
+                            Join
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            <form method="post" id="team-form" 
+            th:action="@{/teams}" th:object="${team}">
+                <h5>Can't find your team? Create a new one!</h5>
+                <div>
+                    <label for="team-name">Team name</label>
+                    <input id="team-name" type="text" th:field="*{name}">
+                    <label for="team-name">Team description</label>
+                    <input id="team-description" type="text" th:field="*{description}"> 
+                    <button type="submit" class="small-btn">Create your team!</button>
+                </div>
+            </form>
+        </table>
+    </section>
+</body>
+</html>

@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.brown.model.Project;
 import com.brown.model.Task;
 import com.brown.model.Team;
 import com.brown.repository.ProjectRepository;
 
+@Service
 public class ProjectServiceImpl implements ProjectService {
 	
 	@Autowired

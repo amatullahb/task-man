@@ -5,13 +5,15 @@
 	<title>taskman</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/login.css">
+	<script src="../static/js/validate.js"></script>
 </head>
 <body>
 	<h1>Welcome to taskman!</h1>
 	<div class="form-container">
-		<h3>Register</h3>
 		<form method="post" id="registration-form" 
 		th:action="@{/register}" th:object="${user}">
+		<!-- th:action="@{/users/{id}(id=${user.id})}" -->
+			<h3>Register</h3>
 			<div class="user-info">
 				<label for="firstname">First name</label>
 				<input type="text" id="firstname" th:field="*{firstname}">

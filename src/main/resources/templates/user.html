@@ -6,8 +6,19 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+	<header>
+        <nav class="main-nav">
+            <h2>taskman</h2>
+            <a href="/users{id}"><p>Profile</p></a>
+            <a href="/team"><p>Team</p></a>
+            <span></span>
+            <span></span>
+            <a href="/"><p>Logout</p></a>
+        </nav>
+    </header>
 	<div>
 		<h1 th:text="'Hello ' + ${user.firstname} + '!'"></h1>
+		<a href="/teams">Join a team to get started!</a>
 	</div>
 </body>
 </html>
