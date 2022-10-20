@@ -15,4 +15,5 @@ This is a basic project managment application. Users can register and log in; vi
 * Spring Boot 2.7.4
 * Spring Framework
 * Spring Data JPA
+* Spring Security
 * Thymeleaf
