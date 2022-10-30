@@ -128,6 +128,10 @@ button:hover {
     display: flex;
 }
 
+#teams-table {
+    margin-top: 15px;
+}
+
 .urgent {
     background-color: var(--red);
 }

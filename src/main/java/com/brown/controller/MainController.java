@@ -102,69 +102,14 @@ public class MainController {
 	}
 	
 	/**
-	 * Display all users
-	 * @param model
-	 * @return users.html
-	 */
-	@GetMapping("/team")
-	public String viewUsers (Model model) {
-		model.addAttribute("usersList", userService.getAllUsers());
-		return "users";
-	}
-	
-	/**
-	 * Shows all teams
-	 * @param model
-	 * @return teams.html
-	 */
-	@GetMapping("/teams")
-	public String viewTeams (Model model) {
-	    model.addAttribute("teamList", teamService.getAllTeams());
-	    Team team = new Team();
-	    model.addAttribute("team", team);
-	    model.addAttribute("user", loggedUser.getUser());
-	    return "teams";
-	}
-	
-	/**
-	 * Is called when a new team is added via frontend
-	 * @param team
-	 * @param model
-	 * @return teams.html with new team
-	 */
-	@PostMapping("/teams")
-    public String viewNewTeam (@ModelAttribute("team") Team team, Model model) {
-	    Team newTeam = new Team();
-	    newTeam.setName(team.getName());
-	    newTeam.setDescription(team.getDescription());
-	    teamService.addTeam(newTeam);
-        model.addAttribute("teamList", teamService.getAllTeams());
-        return "teams";
-    }
-	
-    /**
-     * Shows the main project page
-     * @return project.html
-     */
-    @GetMapping("/project")
-    public String showProject () {
-        return "project";
-    }
-    
-    /**
-     * Updates the main project page after changes from the frontend
-     * @param task
-     * @param user
+     * Display all users
      * @param model
-     * @return project.html
+     * @return users.html
      */
-    @PostMapping("/project")
-    public String joinTeam (@ModelAttribute("task") Task task, Model model) {
-        Task newTask = new Task();
-        newTask.setName(task.getName());
-        taskService.addTask(newTask);
-        model.addAttribute("todoTasks", taskService.getAllTasks());
-        return "project";
+    @GetMapping("/users")
+    public String viewUsers (Model model) {
+        model.addAttribute("usersList", userService.getAllUsers());
+        return "users";
     }
 	
     /**

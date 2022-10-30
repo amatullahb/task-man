@@ -15,7 +15,9 @@ public interface TeamService {
 	
 	public void deleteTeam (Team team);
 	
-	public void deleteTaskById (Long id);
+	public void deleteTeamById (Long id);
+	
+	public void updateTeam (Team team);
 	
 	public void updateTeamName (Long id, String name);
 	

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>taskman</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <h2>taskman</h2>
+            <a href="/users/1"><p>Profile</p></a>
+            <a href="/users"><p>Team</p></a>
+            <span></span>
+            <span></span>
+            <a href="/"><p>Logout</p></a>
+        </nav>
+    </header>
+    <section class="container">
+        <h1 th:text="${team.name}"></h1>
+        <p th:text="${team.description}"></p>
+        <!-- <form method="PUT" id="team-form" 
+            th:action="@{'/teams/' + ${team.id}}" th:object="${teamData}">
+            <h5>Change team name</h5>
+            <div>
+                <label for="team-name">Team name</label>
+                <input id="team-name" type="text" th:field="*{name}">
+                <button type="submit" class="small-btn">Save</button>
+            </div>
+        </form> -->
+        <form method="put" 
+            th:action="@{'/teams/' + ${team.id}}" th:object="${team}">
+            <h5>Edit team information</h5>
+            <div>
+                <label for="new-team-name">Team name</label>
+                <input id="new-team-name" type="text" th:field="*{name}"> 
+                <label for="team-description">Team description</label>
+                <input id="team-description" type="text" th:field="*{description}">
+                <button type="submit" class="small-btn">Save</button>
+            </div>
+        </form>
+        <!-- <form method="PUT" id="team-form" 
+            th:action="@{'/teams/' + ${team.id}}" th:object="${teamData}">
+            <h5>Change team description</h5>
+            <div>
+                <label for="team-description">Team description</label>
+                <input id="team-description" type="text" th:field="*{description}">
+                <button type="submit" class="small-btn">Save</button>
+            </div>
+        </form> -->
+    </section>
+</body>
+</html>

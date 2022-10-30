@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
     <title>taskman</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -10,7 +10,7 @@
         <nav class="main-nav">
             <h2>taskman</h2>
             <a href="/users/1"><p>Profile</p></a>
-            <a href="/team"><p>Team</=></a>
+            <a href="/users"><p>Team</=></a>
             <span></span>
             <span></span>
             <a href="/"><p>Logout</p></a>
@@ -18,7 +18,7 @@
     </header>
     <section class="container">
         <h1>Teams</h1>
-        <table>
+        <table id="teams-table">
             <tr th:each="team : ${teamList}">
                 <td th:text="${team.name}"></td>
                 <td th:text="${team.description}"></td>
@@ -31,7 +31,24 @@
                         </button>
                     </a> 
                 </td>
-                <td><a th:href="@{/teams}">Delete</a></td>
+                <td>
+                    <a th:href="@{'/teams/' + ${team.id}}">
+                        <!-- edit should take you to a teams popup -->
+                        <button class="small-btn">
+                            Edit 
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <form method="delete" th:action="@{'/teams/' + ${team.id}}">
+                        <button id="submit" class="small-btn">Delete</button>
+                    </form>
+                    <!-- <a th:href="${team.removeMember(user)}">
+                        <button class="small-btn">
+                            Delete 
+                        </button>
+                    </a> -->
+                </td>
             </tr>
             <form method="post" id="team-form" 
             th:action="@{/teams}" th:object="${team}">

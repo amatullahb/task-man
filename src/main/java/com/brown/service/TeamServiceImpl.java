@@ -42,7 +42,7 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	public void deleteTaskById(Long id) {
+	public void deleteTeamById(Long id) {
 		teamRepository.deleteById(id);
 	}
 
@@ -81,5 +81,20 @@ public class TeamServiceImpl implements TeamService {
 		    team.removeMember(member);
 		}
 	}
+
+    @Override
+    public void updateTeam(Team team) {
+        Optional<Team> _team = teamRepository.findById(team.getId());
+        if (_team.isPresent()) {
+            Team updatedTeam = _team.get();
+            if (team.getDescription() != null) {
+                updatedTeam.setDescription(team.getDescription());
+            }
+            if (team.getName() != null) {
+                updatedTeam.setName(team.getName());
+            }
+        }
+        
+    }
 
 }
